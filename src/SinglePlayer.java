@@ -1,4 +1,9 @@
-package PACKAGE_NAME;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class SinglePlayer {
+public class SinglePlayer extends JFrame {
+
+
 }

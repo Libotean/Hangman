@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuFrame extends JFrame{
     private Color EXIT = new Color(0xB6174B);
@@ -8,7 +10,10 @@ public class MenuFrame extends JFrame{
     private Color BACKGROUND = new Color(244, 253, 217);
     private Color TITLE = new Color(0, 99, 167);
     private Color TITLE_SHADOW = new Color(0, 50, 90);
-    // 1, 167, 194 CYAN
+
+    private JButton singlePlayerButton;
+    private JButton multiPlayerButton;
+    private JButton exitButton;
 
     public MenuFrame(){
         setTitle("Spanzuratoarea");
@@ -50,9 +55,9 @@ public class MenuFrame extends JFrame{
         titlePanel.add(titleButtonPanel, BorderLayout.CENTER);
         add(titlePanel, BorderLayout.NORTH);
 
-        JButton singlePlayerButton = createRoundButton("Singleplayer", SINGLEPLAYER);
-        JButton multiPlayerButton = createRoundButton("Multiplayer", MULTIPLAYER);
-        JButton exitButton = createRoundButton("Exit", EXIT);
+        singlePlayerButton = createRoundButton("Singleplayer", SINGLEPLAYER);
+        multiPlayerButton = createRoundButton("Multiplayer", MULTIPLAYER);
+        exitButton = createRoundButton("Exit", EXIT);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(BACKGROUND );
@@ -71,6 +76,8 @@ public class MenuFrame extends JFrame{
         mainPanel.add(exitButton, gbc);
 
         add(mainPanel, BorderLayout.CENTER);
+
+        setupButtonListeners();
 
         setVisible(true);
     }
@@ -118,6 +125,31 @@ public class MenuFrame extends JFrame{
         button.setPreferredSize(new Dimension(350, 100));
 
         return button;
+    }
+
+    private void setupButtonListeners(){
+        singlePlayerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                SinglePlayer singlePlayer = new SinglePlayer();
+                singlePlayer.setVisible(true);
+            }
+        });
+        multiPlayerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                Multiplayer multiplayer = new Multiplayer();
+                multiplayer.setVisible(true);
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     public static void main(String[] args) {
