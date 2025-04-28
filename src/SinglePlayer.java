@@ -57,7 +57,7 @@ public class SinglePlayer extends JFrame {
         hangmanPanel.setPreferredSize(new Dimension(300, 250));
         hangmanPanel.setBackground(BACKGROUND);
 
-        wordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        wordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         wordPanel.setBackground(BACKGROUND);
         updateWordDisplayy();
 
@@ -67,14 +67,14 @@ public class SinglePlayer extends JFrame {
         messageLabel = new JLabel("Succes!");
         messageLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 
-        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 5));
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         statusPanel.add(attemptsLabel);
         statusPanel.add(messageLabel);
         statusPanel.setBackground(BACKGROUND);
 
         keyboardPanel = new JPanel(new GridLayout(3, 9, 5, 5));
         keyboardPanel.setBackground(BACKGROUND);
-        keyboardPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+        keyboardPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         createKeyboard();
 
         GoBackButton = ButtonCreate.createRoundButton("Go Back", GO_BACK_COLOR);
@@ -183,6 +183,9 @@ public class SinglePlayer extends JFrame {
     }
 
     private void resetUI(){
+        keyboardPanel.removeAll();
+        createKeyboard();
+
         for(Component c : keyboardPanel.getComponents()){
             c.setEnabled(true);
         }
@@ -190,6 +193,9 @@ public class SinglePlayer extends JFrame {
         updateWordDisplayy();
         attemptsLabel.setText("Incercari ramase: " + game.getAttempts());
         messageLabel.setText("Succes!");
+
+        keyboardPanel.revalidate();
+        keyboardPanel.repaint();
         repaint();
     }
 
