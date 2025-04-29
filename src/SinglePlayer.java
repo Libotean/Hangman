@@ -59,7 +59,7 @@ public class SinglePlayer extends JFrame {
 
         wordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         wordPanel.setBackground(BACKGROUND);
-        updateWordDisplayy();
+        updateWordDisplay();
 
         attemptsLabel = new JLabel("Incercari ramase: " + game.getAttempts());
         attemptsLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
@@ -132,7 +132,7 @@ public class SinglePlayer extends JFrame {
     }
     private void handleLetterGuess(char c){
         boolean correct = game.guessLetter(c);
-        updateWordDisplayy();
+        updateWordDisplay();
         if(correct){
             messageLabel.setText("Corect!");
         } else {
@@ -157,7 +157,7 @@ public class SinglePlayer extends JFrame {
         if(won){
             messageLabel.setText("Felicitari! Ai castigat!");
         } else{
-            messageLabel.setText("Ai pierdut! Cuvantul era: " + game.getCurrentProgress());
+            messageLabel.setText("Ai pierdut! Cuvantul era: " + game.getWordToGuess());
         }
 
         int option = JOptionPane.showConfirmDialog(
@@ -190,7 +190,7 @@ public class SinglePlayer extends JFrame {
             c.setEnabled(true);
         }
 
-        updateWordDisplayy();
+        updateWordDisplay();
         attemptsLabel.setText("Incercari ramase: " + game.getAttempts());
         messageLabel.setText("Succes!");
 
@@ -244,7 +244,7 @@ public class SinglePlayer extends JFrame {
         return button;
     }
 
-    private void updateWordDisplayy(){
+    private void updateWordDisplay(){
         wordPanel.removeAll();
         String progress = game.getCurrentProgress();
         for(char c : progress.toCharArray()){

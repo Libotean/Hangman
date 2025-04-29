@@ -55,6 +55,10 @@ public class Game {
         return attempts;
     }
 
+    public String getWordToGuess(){
+        return wordToGuess;
+    }
+
     public Game(String word){
         this.wordToGuess = word.toLowerCase();
         this.attempts = 7;
