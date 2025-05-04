@@ -16,11 +16,16 @@ public class ButtonCreate {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-                g2.setColor(shadowColor);
-                g2.fillRoundRect(5, 5, getWidth() - 5, getHeight() - 5, 20, 20);
+                if(isEnabled()){
+                    g2.setColor(shadowColor);
+                    g2.fillRoundRect(5, 5, getWidth() - 5, getHeight() - 5, 20, 20);
 
-                g2.setColor(color);
-                g2.fillRoundRect(0, 0, getWidth() - 5, getHeight() - 5, 20, 20);
+                    g2.setColor(color);
+                    g2.fillRoundRect(0, 0, getWidth() - 5, getHeight() - 5, 20, 20);
+                } else {
+                    g2.setColor(Color.LIGHT_GRAY);
+                    g2.fillRoundRect(0, 0, getWidth() - 5, getHeight() - 5, 20, 20);
+                }
 
                 super.paintComponent(g2);
                 g2.dispose();

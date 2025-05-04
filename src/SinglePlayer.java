@@ -115,7 +115,7 @@ public class SinglePlayer extends JFrame {
 
         for(String row : rows){
             for(char c : row.toCharArray()){
-                JButton letterButton = createLetterButton(String.valueOf(c));
+                JButton letterButton = ButtonCreate.createRoundButton(String.valueOf(c), KEYBOARD);
                 letterButton.setPreferredSize(new Dimension(40, 40));
                 letterButton.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 
